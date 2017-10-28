@@ -1,7 +1,7 @@
 .onoffswitch {
     position: absolute;
     top: 50%;
-    right: -18%;
+    right: -5%;
     -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
 }
 .onoffswitch-checkbox {
