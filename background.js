@@ -21,8 +21,6 @@ function sort () {
 	    if (!inList) {
 		sites.push(domain(tab[i]));
 	    }
-
-	    inList = false;
 	}
 
 	var count = 0;
