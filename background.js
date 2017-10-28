@@ -21,11 +21,17 @@ function LinkedList () {
     this.first = null;
 
     this.add = function (node) {
-	if (this.first != null) {
+	if (this.first == null) {
+	    this.first = node;
+	}
+	else {
+	    
 	    var x = this.first;
+	    
 	    while (x.next != null){
 		x = x.next;
 	    }
+	    
 	    x.next = node;
 	}
     };
@@ -80,6 +86,30 @@ alert(linkedList.contains(new Node("hello")));
 alert(linkedList.contains(new Node("ready")));
 */
 
+var data = new LinkedList();
+
+function constructData (sites, tab) {
+
+    for (var i = 0; i < sites.length; i++){
+	var tmp = new Node([sites[i],new LinkedList()]);
+	data.add(tmp);
+    }
+
+    var x = data.first;
+
+    alert(x);
+
+    while (x != null) {
+
+	var y = x.data[1];
+	
+	for (var j = 0; j < tab.length; j++){
+	    y.add(tab[j]);
+	}
+	x = x.next;
+    }
+}
+
 function domain (tab) {
     var x = tab.url.split("/");
     return x[2];
@@ -87,7 +117,7 @@ function domain (tab) {
 
 function sort () {
     var pinnedTabs = 0;
-        
+    
     chrome.tabs.query( {
 	currentWindow: true,
     }, function (tab) {
