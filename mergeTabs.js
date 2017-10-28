@@ -36,6 +36,14 @@ function moveTabs(windows) {
   }
 }
 
+document.addEventListener('DOMContentLoaded', function() {
+    var butt = document.getElementById('');
+    // onClick's logic below:
+    butt.addEventListener('click', function() {
+        start();
+    });
+});
+
 // Set up a click handler so that we can merge all the windows.
 //chrome.browserAction.onClicked.addListener(start);
 //Change this listener to react to a button press.
