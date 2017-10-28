@@ -1,3 +1,85 @@
+
+function Node () {
+    this.data = null;
+    this.next = null;
+}
+
+
+function Node (data) {
+    this.data = data;
+    this.next = null;
+}
+
+
+function Node (data,next) {
+    this.data = data;
+    this.next = next;
+}
+
+
+function LinkedList () {
+    this.first = null;
+
+    this.add = function (node) {
+	if (this.first != null) {
+	    var x = this.first;
+	    while (x.next != null){
+		x = x.next;
+	    }
+	    x.next = node;
+	}
+    };
+
+    this.remove = function (node) {
+	if (this.first != null) {
+	    var past = null;
+	    var current = this.first;
+	    while (current != null) {
+		if (current.data == node.data) {
+
+		    if (past == null) {
+			current = null;
+		    }
+		    else {
+			past.next = current.next;
+			return true;
+		    }
+		}
+		
+		past = current;
+		current = current.next;
+	    }
+
+	    return false;
+	}
+	return false;
+    };
+
+    this.contains = function (node) {
+	var x = this.first;
+	
+	while (x != null){
+	    if (x.data == node.data){
+		return true;
+	    }
+	    x = x.next;
+	}
+	return false;
+    };
+}
+
+
+/* Linked List Example
+var linkedList = new LinkedList();
+linkedList.first = new Node("hello");
+linkedList.add(new Node("ready"));
+alert(linkedList.first);
+alert(linkedList.first.data);
+linkedList.remove(new Node("ready"));
+alert(linkedList.contains(new Node("hello")));
+alert(linkedList.contains(new Node("ready")));
+*/
+
 function domain (tab) {
     var x = tab.url.split("/");
     return x[2];
