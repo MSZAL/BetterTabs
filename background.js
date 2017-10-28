@@ -5,6 +5,7 @@ function domain(url) {
     var site = str.split("/");
     return site[2];
 }
+
 /*
 chrome.browserAction.onClicked.addListener(function(tab) {
     chrome.tabs.query({
