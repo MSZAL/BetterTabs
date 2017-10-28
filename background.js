@@ -1,4 +1,4 @@
-
+/*
 function Node () {
     this.data = null;
     this.next = null;
@@ -75,7 +75,7 @@ function LinkedList () {
 }
 
 
-/* Linked List Example
+Linked List Example
 var linkedList = new LinkedList();
 linkedList.first = new Node("hello");
 linkedList.add(new Node("ready"));
@@ -84,36 +84,47 @@ alert(linkedList.first.data);
 linkedList.remove(new Node("ready"));
 alert(linkedList.contains(new Node("hello")));
 alert(linkedList.contains(new Node("ready")));
-*/
+
 
 var data = new LinkedList();
 
-function constructData (sites, tab) {
+function constructData (sites, tab, pinnedTabs) {
 
     for (var i = 0; i < sites.length; i++){
 	var tmp = new Node([sites[i],new LinkedList()]);
+	//console.log(tmp.data[0] + " " + tmp.data[1]);
 	data.add(tmp);
     }
 
     var x = data.first;
-
-    alert(x);
-
+    
     while (x != null) {
 
-	var y = x.data[1];
+	var y = x.data[0];
+	var z = x.data[1];
+	alert(y);
+	alert(z);
 	
-	for (var j = 0; j < tab.length; j++){
-	    y.add(tab[j]);
+	for (var j = pinnedTabs; j < tab.length; j++){
+	    if (y == domain(tab[j])
+		z.add(tab[j]);
 	}
+        
 	x = x.next;
     }
 }
+
+
+constructData(["google.com"],["tab1"]);
+*/
 
 function domain (tab) {
     var x = tab.url.split("/");
     return x[2];
 }
+
+
+var sites = [];
 
 function sort () {
     var pinnedTabs = 0;
@@ -121,7 +132,7 @@ function sort () {
     chrome.tabs.query( {
 	currentWindow: true,
     }, function (tab) {
-	var sites = [];
+	sites = [];
 	for (var i = 0; i < tab.length; i++){
 	    if (tab[i].pinned) {
 		pinnedTabs++;
@@ -138,6 +149,7 @@ function sort () {
 
 		if (!inList) {
 		    sites.push(domain(tab[i]));
+		    
 		}
 	    }
 	}
@@ -157,4 +169,8 @@ function sort () {
 
 chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
     sort();
+});
+
+chrome.commands.onCommand.addListener(function(command) {
+    console.log('Command:', command);
 });
