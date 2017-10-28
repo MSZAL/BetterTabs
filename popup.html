@@ -12,14 +12,23 @@
       body {
         margin: 10px;
         white-space: nowrap;
+        text-align: center;
       }
 
       h1 {
         font-size: 15px;
+        text-align: center;
       }
+        
+      h2 {
+        text-align: center;
+      }
+        
+      
 
       #container {
-        align-items: right  ;
+        
+        
         display: flex;
         justify-content: space-between;
       }
@@ -34,29 +43,16 @@
     <script src="popup.js"></script>
   </head>
 
-  <body>
-  <h1>Dynamic Arrangement</h1>
-  <div class="onoffswitch">
-    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
-    <label class="onoffswitch-label" for="myonoffswitch">
-        <span class="onoffswitch-inner"></span>
-        <span class="onoffswitch-switch"></span>
-    </label>
-</div>
+
+    <h2><font color="lightgray">Shortcut: Alt + W</font></h2>
+    <h1>Dynamic Arrangement</h1>
+    <div class="onoffswitch">
+        <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked style="position: center;">
+        <label class="onoffswitch-label" for="myonoffswitch">
+            <span class="onoffswitch-inner"></span>
+            <span class="onoffswitch-switch"></span>
+        </label>
     </div>
-  </body>
-<h1>Second</h1>
-<div class="onoffswitch">
-    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
-    <label class="onoffswitch-label" for="myonoffswitch">
-        <span class="onoffswitch-inner"></span>
-        <span class="onoffswitch-switch"></span>
-    </label>
-</div>
-
-
-
-
 
 
 
@@ -68,7 +64,6 @@
     border: none;
     color: white;
     padding: 20px;
-    text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
@@ -81,12 +76,13 @@
 .button3 {border-radius: 10px;}
 .button4 {border-radius: 10px;}
 .button5 {border-radius: 10px;}
+.onoffswitch{ text-align: center; }
 </style>
 </head>
-<body>
+
 
 <h2>Closes tabs from a site</h2>
-<button class="button button1">Press me</button> </body><br>
+<button class="button button1">Press me</button><br>
 <h2>Organize tabs</h2>
 <button class="button button2">Organize</button><br>
 <h2>Open sites into new window</h2>
