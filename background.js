@@ -156,19 +156,18 @@ function moveTabs(windows) {
   }
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    var butt = document.getElementById('');
-    // onClick's logic below:
-    butt.addEventListener('click', function() {
-        start();
-    });
-});
+//document.addEventListener('DOMContentLoaded', function() {
+//    var butt = document.getElementById('');
+//    // onClick's logic below:
+//    butt.addEventListener('click', function() {
+//        start();
+//    });
+//});
 
 function domain (tab) {
     var x = tab.url.split("/");
     return x[2];
 }
-
 
 var sites = [];
 
@@ -176,40 +175,38 @@ function sort () {
     var pinnedTabs = 0;
     
     chrome.tabs.query( {
-	currentWindow: true,
+	   currentWindow: true,
     }, function (tab) {
-	sites = [];
-	for (var i = 0; i < tab.length; i++){
-	    if (tab[i].pinned) {
-		pinnedTabs++;
-	    }
-	    else {
-		var d = domain(tab[i]);
-		var inList = false;
+	   sites = [];
+	   for (var i = 0; i < tab.length; i++){
+	       if (tab[i].pinned) {
+               pinnedTabs++;
+	       }
+	       else {
+               var d = domain(tab[i]);
+               var inList = false;
 		
-		for (var l = 0; l < sites.length; l++){
-		    if (sites[l] == d){
-			inList = true;
-		    }
-		}
+               for (var l = 0; l < sites.length; l++){
+                   if (sites[l] == d){
+                       inList = true;
+                   }
+               }
+               if (!inList) {
+                   sites.push(domain(tab[i]));
+               }
+           }
+       }
 
-		if (!inList) {
-		    sites.push(domain(tab[i]));
-		    
-		}
-	    }
-	}
-
-	var count = pinnedTabs;
+        var count = pinnedTabs;
 	
-	for (var k = 0; k < sites.length; k++){
-	    //alert(sites[k]);
-	    for (j = 0; j < tab.length; j++){
-		if (sites[k] == domain(tab[j])) {
-		    chrome.tabs.move(tab[j].id,{index:count++});
-		}
-	    }
-	}
+        for (var k = 0; k < sites.length; k++){
+            //alert(sites[k]);
+            for (j = 0; j < tab.length; j++){   
+                if (sites[k] == domain(tab[j])) {
+                    chrome.tabs.move(tab[j].id,{index:count++});
+                }
+            }
+        }
     });
 }
 
