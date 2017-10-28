@@ -1,32 +1,43 @@
-function domain(url) {
-    //splice url at third '/'
-    //index = url.indexOf('/', 8);
-    //return url.slice(0, index);
-    var site = str.split("/");
-    return site[2];
+function domain (tab) {
+    var x = tab.url.split("/");
+    return x[2];
 }
 
-/*
-chrome.browserAction.onClicked.addListener(function(tab) {
-    chrome.tabs.query({
-        currentWindow: true
-    },function(tab) {
-	
+function sort () {
+    chrome.tabs.query( {
+	currentWindow: true
+    }, function (tab) {
+	var sites = [];
+	for (var i = 0; i < tab.length; i++){
+	    var d = domain(tab[i]);
+	    var inList = false;
+	    
+	    for (var l = 0; l < sites.length; l++){
+		if (sites[l] == d){
+		    inList = true;
+		}
+	    }
 
+	    if (!inList) {
+		sites.push(domain(tab[i]));
+	    }
+
+	    inList = false;
+	}
+
+	var count = 0;
 	
-        var tabList = [];
-        for (var i in tabs) {
-            var i_url = domain(i.url);
-            if (!(i_url in tabList)) {
-                var count = i.index;
-                tabList.push(i_url);
-                for (var x in tabs(i.index)) {
-                    if(domain(x.url) == i_url) {
-                        chrome.tabs.move(x.id, {index: count++});
-                    }
-                }
-            }
-        }
-    }); // End of chrome.tabs.query); 
+	for (var k = 0; k < sites.length; k++){
+	    //alert(sites[k]);
+	    for (j = 0; j < tab.length; j++){
+		if (sites[k] == domain(tab[j])) {
+		    chrome.tabs.move(tab[j].id,{index:count++});
+		}
+	    }
+	}
+    });
+}
+
+chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
+    sort();
 });
-*/
