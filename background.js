@@ -156,13 +156,17 @@ function moveTabs(windows) {
   }
 }
 
-//document.addEventListener('DOMContentLoaded', function() {
-//    var butt = document.getElementById('');
-//    // onClick's logic below:
-//    butt.addEventListener('click', function() {
-//        start();
-//    });
-//});
+
+chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
+    chrome.storage.sync.get("data", function (items) {
+        if (!chrome.runtime.error) {
+            if (items.data){
+                sort();
+            }
+        }
+    });
+});
+
 
 function domain (tab) {
     var x = tab.url.split("/");
@@ -210,9 +214,6 @@ function sort () {
     });
 }
 
-chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
-    sort();
-});
 
 chrome.commands.onCommand.addListener(function(command) {
     console.log('Command:', command);

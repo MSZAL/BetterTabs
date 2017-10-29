@@ -1,7 +1,45 @@
 
+
+chrome.storage.sync.get("data", function (items) {
+    if (items.data == undefined) {
+        document.getElementById("myonoffswitch").checked = true;
+    }
+    else {
+        document.getElementById("myonoffswitch").checked = items.data;
+    }
+});
+
+/*
+document.getElementById("myonoffswitch").onclick = function () {
+    alert("clicked");
+    var d = document.getElementById("myonoffswitch").checked;
+    chrome.storage.set({ "data" : d}, function() {
+        if (chrome.runtime.error) {
+            console.log("error");
+        }
+    });
+}
+*/
+
+
 document.addEventListener('DOMContentLoaded', function () {
     var link = document.getElementById("close_tabs");
     var link2 = document.getElementById("organize");
+    var link3 = document.getElementById("myonoffswitch");
+    
+    link3.onclick = function () {
+        var d = document.getElementById("myonoffswitch").checked;
+        
+        if (d) {
+            sort();
+        }
+        
+        chrome.storage.sync.set({ "data" : d}, function() {
+           if (chrome.runtime.error){
+               console.log("error");
+           } 
+        });
+    }
     
     link.addEventListener('click', function () {
 	getActiveTab(removeTabs);
@@ -10,6 +48,8 @@ document.addEventListener('DOMContentLoaded', function () {
     link2.addEventListener('click', function () {
 	sort();
     });
+    
+    
 });
 
 function domain (tab) {
