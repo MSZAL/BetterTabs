@@ -222,6 +222,7 @@ chrome.commands.onCommand.addListener(function(command) {
 var tabsToMove = [];
 
 function newWindow () {
+    alert("TEST");
     chrome.tabs.query( {
         currentWindow: true
     }, function (tab) {
