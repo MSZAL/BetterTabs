@@ -1,4 +1,4 @@
-<h1> BetterTabs <h1>
+<h1> BetterTabs </h1>
 <p> 
 This extension allows you to dynamically groups tabs together, sort Domain names to improve user efficiency and close all of a certain domain
 </p>
