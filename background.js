@@ -217,3 +217,64 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
 chrome.commands.onCommand.addListener(function(command) {
     console.log('Command:', command);
 });
+
+
+var tabsToMove = [];
+
+function newWindow () {
+    chrome.tabs.query( {
+        currentWindow: true
+    }, function (tab) {
+        var current;
+        for (var l = 0; l < tab.length; l++){
+            if (tab[l].active == true){
+                current = domain(tab[l].url);
+            }
+        }
+        for (var i = 0; i < tab.length; i++){
+            if (!(tab[i].pinned)) {
+                if (domain(tab[i].url) == current){
+                    tabsToMove.push(tab[i]);
+            }
+        }
+        
+        if (tabsToMove.length > 0) {
+            /* Create a new window with the same
+             * location and size as the original */
+            chrome.windows.create({
+                top: oldWin.top,
+                left: oldWin.left,
+                width: oldWin.width,
+                height: oldWin.height,
+                focused: false
+            }, function(newWin) {
+                /* Remove the new, empty tab created by default */
+                chrome.tabs.query({
+                    windowId: newWin.id
+                }, function(tabsToClose) {
+                    /* Update the window's state (e.g. "maximized") */
+                    chrome.windows.update(newWin.id, { state: oldWin.state });
+
+                    /* Move the tabs to the newly created window */
+                    chrome.tabs.move(tabsToMove, {
+                        windowId: newWin.id,
+                        index: -1
+                    }, function() {
+                        /* Close any tabs that pre-existed (i.e. 1 empty tab)
+                         * [Do not do this BEFORE moving the tabs,
+                         *  or the window will be empty and will close] */
+                        var lastIdx = tabsToClose.length - 1;
+                        tabsToClose.forEach(function(t, idx) {
+                            chrome.tabs.remove(t.id);
+                            if (idx === lastIdx) {
+                                chrome.windows.update(oldWin.id, {
+                                    focused: true
+                                });
+                            }
+                        });
+                    });
+                });
+            });
+        }
+    });
+}
