@@ -235,6 +235,7 @@ function newWindow () {
             if (!(tab[i].pinned)) {
                 if (domain(tab[i].url) == current){
                     tabsToMove.push(tab[i]);
+                }
             }
         }
         
@@ -278,3 +279,4 @@ function newWindow () {
         }
     });
 }
+
