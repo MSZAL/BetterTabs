@@ -1,145 +1,44 @@
 <!doctype html>
-<link rel="stylesheet" href="stylesheet.css">
+
 <!--
- This page is shown when the extension button is clicked, because the
- "browser_action" field in manifest.json contains the "default_popup" key with
- value "popup.html".
- -->
-<html>
-  <head>
-    <title>Getting Started Extension's Popup</title>
-    <style type="text/css">
-      body {
-        margin: 10px;
-        white-space: nowrap;
-        text-align: center;
-      }
-
-      h1 {
-        font-size: 15px;
-        text-align: center;
-      }
-        
-      h2 {
-        text-align: center;
-      }
-        
-      
-
-      #container {
-        
-        
-        display: flex;
-        justify-content: space-between;
-      }
-    </style>
-
-    <!--
-      - JavaScript and HTML must be in separate files: see our Content Security
-      - Policy documentation[1] for details and explanation.
-      -
-      - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
-    -->
-    <script src="popup.js"></script>
-  </head>
-
-
-    <h2><font color="lightgray">Shortcut: Alt + W</font></h2>
-    <h1>Dynamic Arrangement</h1>
-    <div class="onoffswitch">
-        <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked style="position: center;">
-        <label class="onoffswitch-label" for="myonoffswitch">
-            <span class="onoffswitch-inner"></span>
-            <span class="onoffswitch-switch"></span>
-        </label>
-    </div>
-
-
-
-
+    This page is shown when the extension button is clicked, because the
+    "browser_action" field in manifest.json contains the "default_popup" key with
+    value "popup.html".
+  -->
 <head>
-<style>
-.button {
-    background-color: #28E0DA; /* Green */
-    border: none;
-    color: white;
-    padding: 20px;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-}
-
-.button1 {border-radius: 10px;}
-.button2 {border-radius: 10px;}
-.button3 {border-radius: 10px;}
-.button4 {border-radius: 10px;}
-.button8 {border-radius: 10px;}
-.combine_windows {border-radius: 10px;}
-
-
-.onoffswitch{ text-align: center; }
-</style>
+  <link rel="stylesheet" href="stylesheet.css">
+  <title>Getting Started Extension's Popup</title>
+  <script src="popup.js"></script>
 </head>
 
-<br>    
-<button id="close_tabs" class="button1">Close tabs</button>
-<br>    
-<br/>    
-<button class="button2">Organize</button>
-<br>    
-<br/>
-<button class="button3">Open new window</button>
-<br>    
-<br/>
-<button id="combine_windows" class="button4">Merge window</button>
-<br>
 
-    
-    
-<head>  
-<style>
-.button {
-    background-color: #4CAF50; /* Green */
-    border: none;
-    color: white;
-    padding: 16px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    transition-duration: 0.4s;
-    cursor: pointer;
-}
-
-
-
-.button8 {
-    background-color: white; 
-    color: black; 
-    border: 2px solid #f44336;
-}
-
-.button8:hover {
-    background-color: #f44336;
-    color: white;
-}
-
-</style>
-</head>
 <body>
-<button class="button button8">popup needed</button>
-</body>
-    
-    
+  <h2><font color="lightgray">Shortcut: Alt + W</font></h2>
+  <h1>Dynamic Arrangement</h1>
+  <div class="onoffswitch">
+    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked style="position: center;">
+    <label class="onoffswitch-label" for="myonoffswitch">
+      <span class="onoffswitch-inner"></span>
+      <span class="onoffswitch-switch"></span>
+    </label>
+  </div>
 
-    
-    
-    
-    
-    
+
+  <br>    
+  <button id="close_tabs" class="button1">Close tabs</button>
+  <br>    
+  <br/>    
+  <button class="button2">Organize</button>
+  <br>    
+  <br/>
+  <button class="button3">Open new window</button>
+  <br>    
+  <br/>
+  <button id="combine_windows" class="button4">Merge window</button>
+  <br>
+  
+  <button class="button button8">popup needed</button>
+</body>
 
 </html>
 
