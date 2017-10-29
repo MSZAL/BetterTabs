@@ -16,8 +16,8 @@ This function allows users to manually sort tabs in the instance that they chose
 </p>
 
 <h2> Installation </h2>
-1. Download zip or git clone repository
-2. In Chrome, go to Settings -> More tools -> Extensions
-3. At the top of the extensions page, enable Developer mode for extensions
-4. Click "Load unpacked extensions" and navigate to the BetterTabs directory
-5. Enable BetterTabs extension in extensions page.
+1. Download zip or git clone repository <br>
+2. In Chrome, go to Settings -> More tools -> Extensions <br>
+3. At the top of the extensions page, enable Developer mode for extensions <br>
+4. Click "Load unpacked extensions" and navigate to the BetterTabs directory <br>
+5. Enable BetterTabs extension in extensions page <br>
