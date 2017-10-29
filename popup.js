@@ -1,7 +1,7 @@
 
 document.addEventListener('DOMContentLoaded', function () {
     var link = document.getElementById("close_tabs");
-
+    
     link.addEventListener('click', function () {
 	getActiveTab(removeTabs);
     });
