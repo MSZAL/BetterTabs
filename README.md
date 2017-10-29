@@ -1,6 +1,6 @@
 <h1>BetterTabs </h1>
 <p> 
-This extension allows you to dynamically groups tabs together, sort Domain names to improve user efficiency and close all of a certain domain
+This extension allows you to dynamically groups tabs together, sort tabs by domains, and extra tab functionality in order to improve user efficiency and experience.
 </p>
 <h3>Dynamic Arrangement </h3>
    <p>
