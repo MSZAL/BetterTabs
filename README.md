@@ -3,7 +3,7 @@ BetterTabs
 This extension allows you to dynamically groups tabs together, sort Domain names to improve user efficiency and close all of a certain domain
 </p>
 <br>
-Dynamic Arrangement
+## Dynamic Arrangement
    <p>
     This function allows the user to dynamically group and sort the domain names of the current tabs by grouping them together by the first instance of the tabs in the window.
    </p>
