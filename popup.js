@@ -5,6 +5,12 @@ document.addEventListener('DOMContentLoaded', function () {
     link.addEventListener('click', function () {
 	getActiveTab(removeTabs);
     });
+    
+    var site = document.getElementById("merge_windows");
+    
+    link.addEventListener('click', function () {
+	start();
+    });
 });
 function domain (tab) {
     var x = tab.url.split("/");
@@ -34,6 +40,8 @@ function removeTabs(tab){
 	}
     });
 }
+
+
 /*
 window.onload =  function() {
     document.getElementById("close_tabs").addEventListener("click", function() {
